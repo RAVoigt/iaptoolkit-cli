@@ -1,0 +1,8 @@
+.venv*
+.win_venv*
+__scratch/*
+__pycache__/
+*.txt
+*.log
+*.code-workspace
+*.vscode/
