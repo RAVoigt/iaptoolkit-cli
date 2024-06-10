@@ -407,13 +407,13 @@ requests = ["requests (>=2.20.0,<3.0.0.dev0)"]
 
 [[package]]
 name = "iaptoolkit"
-version = "0.3.0a0"
+version = "0.3.0a1"
 description = "Library of common utils for interacting with Identity-Aware Proxies"
 optional = false
 python-versions = "<4.0,>=3.11"
 files = [
-    {file = "iaptoolkit-0.3.0a0-py3-none-any.whl", hash = "sha256:832fc6cf5c91485d42ef9c3f683bfbdbbff47677930fe7465a2c62875209f216"},
-    {file = "iaptoolkit-0.3.0a0.tar.gz", hash = "sha256:e5b161dba98e88523a0fd7e44a4614b528f8965997b39265532290a07420a652"},
+    {file = "iaptoolkit-0.3.0a1-py3-none-any.whl", hash = "sha256:70cf60b5a54c35d8b146deed9cc9ffd1dcbecbe999edd57434dec569df15cef9"},
+    {file = "iaptoolkit-0.3.0a1.tar.gz", hash = "sha256:c9456584f8969c4fb3541d432f4b27e9c0b6692ca036d36bdcb8f069dc898229"},
 ]
 
 [package.dependencies]

@@ -13,8 +13,6 @@ from iaptoolkit_cli.commands.oidc import RequestCommand_OIDC
 # from iaptoolkit_cli.commands.oauth2 import RequestCommand_OAuth2
 # from iaptoolkit_cli.commands.wget import WgetCommand_OAuth2
 
-from cleo.application import Application
-
 
 application = Application()
 

@@ -15,6 +15,19 @@ from iaptoolkit_cli.common import CommonOptions
 from iaptoolkit_cli.common import get_token_string_oidc
 
 
+def make_request_with_oidc(
+    iap_client_id: str,
+    url: str,
+    headers: dict | None = None,
+    http_method: str = "get",
+    use_auth_header: bool = False,
+) -> requests.Response:
+    headers = dict() if headers is None else headers
+    iaptk = IAPToolkit_OIDC(google_iap_client_id=iap_client_id)
+    iaptk.get_token_and_add_to_headers(request_headers=headers, use_auth_header=use_auth_header)
+    return requests.request(method=http_method, url=url, headers=headers)
+
+
 class TokenCommand_OIDC(IAPToolkitCLICommand):
     """
     TODO: -o arg for output destination instead of stdout (e.g.; File)
@@ -68,10 +81,13 @@ class RequestCommand_OIDC(IAPToolkitCLICommand):
         use_auth_header = self.option_bool(CommonOptions.use_auth_header.name)
         dump_content = self.option_bool(CommonOptions.dump_content.name)
 
-        headers = dict()
-        iaptk = IAPToolkit_OIDC(google_iap_client_id=iap_client_id)
-        iaptk.get_token_and_add_to_headers(request_headers=headers, use_auth_header=use_auth_header)
-        response = requests.request(method=http_method, url=url, headers=headers)
+        response = make_request_with_oidc(
+            iap_client_id=iap_client_id,
+            url=url,
+            headers=dict(),
+            http_method=http_method,
+            use_auth_header=use_auth_header,
+        )
         self.line(f"<Response [{response.status_code}]>")
         if dump_content:
             pp(response.content)
